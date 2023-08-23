@@ -34,20 +34,24 @@ def generate_report(csv_file, period=None):
     # Generate pie charts
     expenses_summary['Debit'].plot(kind='pie', autopct='%1.1f%%')
     plt.title('Expenses')
-    plt.show()
+    plt.savefig(f'expenses_pie_{datetime.now().strftime("%Y%m%d%H%M%S")}.png')
+    plt.clf()
 
     income_summary['Credit'].plot(kind='pie', autopct='%1.1f%%')
     plt.title('Income')
-    plt.show()
+    plt.savefig(f'income_pie_{datetime.now().strftime("%Y%m%d%H%M%S")}.png')
+    plt.clf()
 
     # Generate bar graphs
     expenses_summary['Debit'].plot(kind='bar')
     plt.title('Expenses')
-    plt.show()
+    plt.savefig(f'expenses_bar_{datetime.now().strftime("%Y%m%d%H%M%S")}.png')
+    plt.clf()
 
     income_summary['Credit'].plot(kind='bar')
     plt.title('Income')
-    plt.show()
+    plt.savefig(f'income_bar_{datetime.now().strftime("%Y%m%d%H%M%S")}.png')
+    plt.clf()
 
 import argparse
 
