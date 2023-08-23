@@ -8,7 +8,10 @@ def generate_report(csv_file, period=None):
         lines = [next(f) for x in range(15)]
 
     # Find the line that contains the headers
-    header_line = next(i for i, line in enumerate(lines) if 'date' in line and 'description' in line and 'debit' in line and 'credit' in line and 'balance' in line)
+    header_line = next((i for i, line in enumerate(lines) if 'date' in line and 'description' in line and 'debit' in line and 'credit' in line and 'balance' in line), None)
+
+    if header_line is None:
+        raise Exception("The CSV file does not contain a header line with 'date', 'description', 'debit', 'credit', and 'balance' in the first 15 lines.")
 
     # Read the CSV file, skipping the lines before the header
     df = pd.read_csv(csv_file, skiprows=header_line)
