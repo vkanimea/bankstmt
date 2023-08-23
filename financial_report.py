@@ -8,7 +8,7 @@ def generate_report(csv_file, period=None):
         lines = [next(f) for x in range(15)]
 
     # Find the line that contains the headers
-    header_line = next((i for i, line in enumerate(lines) if 'date' in line and 'description' in line and 'debit' in line and 'credit' in line and 'balance' in line), None)
+    header_line = next((i for i, line in enumerate(lines) if 'Date' in line and 'Description' in line and 'Debit' in line and 'Credit' in line and 'Balance' in line), None)
 
     if header_line is None:
         raise Exception("The CSV file does not contain a header line with 'date', 'description', 'debit', 'credit', and 'balance' in the first 15 lines.")
@@ -17,7 +17,7 @@ def generate_report(csv_file, period=None):
     df = pd.read_csv(csv_file, skiprows=header_line)
 
     # Convert the date column to datetime
-    df['date'] = pd.to_datetime(df['date'])
+    df['Date'] = pd.to_datetime(df['Date'])
 
     # Filter the data based on the specified period
     if period == 'w':
@@ -28,28 +28,28 @@ def generate_report(csv_file, period=None):
         df = df[df['date'] >= datetime.now() - pd.DateOffset(months=3)]
 
     # Separate expenses and income
-    expenses = df[df['debit'].notna()]
-    income = df[df['credit'].notna()]
+    expenses = df[df['Debit'].notna()]
+    income = df[df['Credit'].notna()]
 
     # Generate summary tables
-    expenses_summary = expenses.groupby('description').sum()
-    income_summary = income.groupby('description').sum()
+    expenses_summary = expenses.groupby('Description').sum()
+    income_summary = income.groupby('Description').sum()
 
     # Generate pie charts
-    expenses_summary['debit'].plot(kind='pie', autopct='%1.1f%%')
+    expenses_summary['Debit'].plot(kind='pie', autopct='%1.1f%%')
     plt.title('Expenses')
     plt.show()
 
-    income_summary['credit'].plot(kind='pie', autopct='%1.1f%%')
+    income_summary['Credit'].plot(kind='pie', autopct='%1.1f%%')
     plt.title('Income')
     plt.show()
 
     # Generate bar graphs
-    expenses_summary['debit'].plot(kind='bar')
+    expenses_summary['Debit'].plot(kind='bar')
     plt.title('Expenses')
     plt.show()
 
-    income_summary['credit'].plot(kind='bar')
+    income_summary['Credit'].plot(kind='bar')
     plt.title('Income')
     plt.show()
 
