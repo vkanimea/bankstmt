@@ -4,14 +4,12 @@ from datetime import datetime
 
 def generate_report(csv_file, period=None):
     # Read the CSV file
-    df = pd.read_csv(csv_file, quotechar='"', skipinitialspace=True)
-
-    # Find the line that contains the headers
-    header_line = next((i for i, line in enumerate(df.columns) if 'Date' in line.title() and 'Description' in line.title() and 'Debit' in line.title() and 'Credit' in line.title() and 'Balance' in line.title()), None)
-
-    if header_line is None:
-        raise Exception("The CSV file does not contain a header line with 'Date', 'Description', 'Debit', 'Credit', and 'Balance'.")
-
+    df = pd.read_csv(csv_file)
+    
+    # Convert 'Debit' and 'Credit' columns to numeric values, removing any commas
+    df['Debit'] = pd.to_numeric(df['Debit'].str.replace(',', ''), errors='coerce')
+    df['Credit'] = pd.to_numeric(df['Credit'].str.replace(',', ''), errors='coerce')
+    
     # Convert the date column to datetime
     df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y')
 
