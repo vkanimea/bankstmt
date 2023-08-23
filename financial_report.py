@@ -3,8 +3,15 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 def generate_report(csv_file, period=None):
-    # Read the CSV file, skipping the first 9 lines
-    df = pd.read_csv(csv_file, skiprows=9)
+    # Read the first 15 lines of the file
+    with open(csv_file, 'r') as f:
+        lines = [next(f) for x in range(15)]
+
+    # Find the line that contains the headers
+    header_line = next(i for i, line in enumerate(lines) if 'date' in line and 'description' in line and 'debit' in line and 'credit' in line and 'balance' in line)
+
+    # Read the CSV file, skipping the lines before the header
+    df = pd.read_csv(csv_file, skiprows=header_line)
 
     # Convert the date column to datetime
     df['date'] = pd.to_datetime(df['date'])
