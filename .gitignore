@@ -1,0 +1,6 @@
+.aider*
+# Ignore CSV files
+*.csv
+
+# Ignore any file that starts with 'statement'
+statement*
