@@ -9,10 +9,10 @@ The script reads the input bank statement file and generates a financial report.
 The input statement file should have the following headers: date, description, debit, credit, balance.
 
 ## Usage
-To use the script, provide the bank statement file as an input:
+To use the script, provide the bank statement file as an input. You can also specify the period for which the report should be generated. The period can be a week (w), a month (m), or a quarter (q). If the period is not specified, the report will be generated for the full period.
 
 ```bash
-python financial_report.py <bank_statement_file>
+python financial_report.py <bank_statement_file> <period>
 ```
 ## Usage
 

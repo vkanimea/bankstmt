@@ -1,9 +1,21 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import datetime
 
-def generate_report(csv_file):
+def generate_report(csv_file, period=None):
     # Read the CSV file
     df = pd.read_csv(csv_file)
+
+    # Convert the date column to datetime
+    df['date'] = pd.to_datetime(df['date'])
+
+    # Filter the data based on the specified period
+    if period == 'w':
+        df = df[df['date'] >= datetime.now() - pd.DateOffset(weeks=1)]
+    elif period == 'm':
+        df = df[df['date'] >= datetime.now() - pd.DateOffset(months=1)]
+    elif period == 'q':
+        df = df[df['date'] >= datetime.now() - pd.DateOffset(months=3)]
 
     # Separate expenses and income
     expenses = df[df['debit'].notna()]
