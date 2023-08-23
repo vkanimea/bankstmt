@@ -3,7 +3,7 @@
 This repository contains a script named `financial_report.py` that processes a bank statement file. 
 
 ## Functionality
-The script reads the input bank statement file and generates a financial report. The report includes income and expenses presented in both a table and a pie chart.
+The script reads the input bank statement file and generates a financial report. The report includes income and expenses presented in both a table, a pie chart, and a bar graph.
 
 ## Input Statement File
 The input statement file should have the following headers: date, description, debit, credit, balance.
