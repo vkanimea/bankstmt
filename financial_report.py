@@ -7,10 +7,10 @@ def generate_report(csv_file, period=None):
     df = pd.read_csv(csv_file, quotechar='"', skipinitialspace=True)
 
     # Find the line that contains the headers
-    header_line = next((i for i, line in enumerate(df.columns) if 'Date' in line and 'Description' in line and 'Debit' in line and 'Credit' in line and 'Balance' in line), None)
+    header_line = next((i for i, line in enumerate(df.columns) if 'Date' in line.title() and 'Description' in line.title() and 'Debit' in line.title() and 'Credit' in line.title() and 'Balance' in line.title()), None)
 
     if header_line is None:
-        raise Exception("The CSV file does not contain a header line with 'date', 'description', 'debit', 'credit', and 'balance'.")
+        raise Exception("The CSV file does not contain a header line with 'Date', 'Description', 'Debit', 'Credit', and 'Balance'.")
 
     # Convert the date column to datetime
     df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y')
