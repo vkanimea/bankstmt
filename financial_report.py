@@ -3,21 +3,17 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 def generate_report(csv_file, period=None):
-    # Read the first 15 lines of the file
-    with open(csv_file, 'r') as f:
-        lines = [next(f) for x in range(15)]
+    # Read the CSV file
+    df = pd.read_csv(csv_file, quotechar='"', skipinitialspace=True)
 
     # Find the line that contains the headers
-    header_line = next((i for i, line in enumerate(lines) if 'Date' in line and 'Description' in line and 'Debit' in line and 'Credit' in line and 'Balance' in line), None)
+    header_line = next((i for i, line in enumerate(df.columns) if 'Date' in line and 'Description' in line and 'Debit' in line and 'Credit' in line and 'Balance' in line), None)
 
     if header_line is None:
-        raise Exception("The CSV file does not contain a header line with 'date', 'description', 'debit', 'credit', and 'balance' in the first 15 lines.")
-
-    # Read the CSV file, skipping the lines before the header
-    df = pd.read_csv(csv_file, skiprows=header_line)
+        raise Exception("The CSV file does not contain a header line with 'date', 'description', 'debit', 'credit', and 'balance'.")
 
     # Convert the date column to datetime
-    df['Date'] = pd.to_datetime(df['Date'])
+    df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y')
 
     # Filter the data based on the specified period
     if period == 'w':
