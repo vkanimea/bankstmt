@@ -53,3 +53,25 @@ The `--onefile` option tells PyInstaller to create a single executable file. If 
 The executable will be created in the `dist` directory that PyInstaller creates in the same directory where your Python script is located.
 
 Please note that the executable will be platform-specific. That means if you create the executable on a Windows system, it will only run on Windows. If you want to create an executable for a different platform, you need to run PyInstaller on that platform.
+
+## Output
+
+The script generates several output files and displays some output on the screen.
+
+### Output Files
+
+The script generates the following output files:
+
+1. `report.txt`: This is a text file that contains the financial report in a tabular format.
+2. `report.pdf`: This is a PDF file that contains the financial report in a graphical format. It includes a pie chart and a bar graph.
+3. `report.csv`: This is a CSV file that contains the raw data used to generate the report.
+
+All output files are saved in the same directory where the script is run.
+
+### Screen Output
+
+The script also displays some output on the screen. This includes:
+
+1. A summary of the financial report, including total income, total expenses, and net income.
+2. A progress report that shows the progress of the script as it reads the input file and generates the report.
+3. Any error messages that occur while the script is running.
