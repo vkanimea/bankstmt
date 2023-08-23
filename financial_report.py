@@ -34,5 +34,14 @@ def generate_report(csv_file, period=None):
     plt.title('Income')
     plt.show()
 
+    # Generate bar graphs
+    expenses_summary['debit'].plot(kind='bar')
+    plt.title('Expenses')
+    plt.show()
+
+    income_summary['credit'].plot(kind='bar')
+    plt.title('Income')
+    plt.show()
+
 # Call the function with your CSV file
 generate_report('your_file.csv')
