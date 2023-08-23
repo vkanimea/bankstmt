@@ -3,8 +3,12 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 def generate_report(csv_file, period=None):
-    # Read the CSV file
-    df = pd.read_csv(csv_file)
+     # Determine the row containing the headers
+    with open(csv_file, 'r') as file:
+        header_row = next((index for index, line in enumerate(file) if 'Date,Description,Debit,Credit,Balance' in line), None)
+    
+    # Read the CSV file from the header row
+    df = pd.read_csv(csv_file, skiprows=header_row if header_row is not None else 0)
     
     # Convert 'Debit' and 'Credit' columns to numeric values, removing any commas
     df['Debit'] = pd.to_numeric(df['Debit'].str.replace(',', ''), errors='coerce')
@@ -15,11 +19,11 @@ def generate_report(csv_file, period=None):
 
     # Filter the data based on the specified period
     if period == 'w':
-        df = df[df['date'] >= datetime.now() - pd.DateOffset(weeks=1)]
+        df = df[df['Date'] >= datetime.now() - pd.DateOffset(weeks=1)]
     elif period == 'm':
-        df = df[df['date'] >= datetime.now() - pd.DateOffset(months=1)]
+        df = df[df['Date'] >= datetime.now() - pd.DateOffset(months=1)]
     elif period == 'q':
-        df = df[df['date'] >= datetime.now() - pd.DateOffset(months=3)]
+        df = df[df['Date'] >= datetime.now() - pd.DateOffset(months=3)]
 
     # Separate expenses and income
     expenses = df[df['Debit'].notna()]

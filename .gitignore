@@ -1,6 +1,7 @@
 .aider*
 # Ignore CSV files
 *.csv
-
+# Ignore reports png files
+*.png
 # Ignore any file that starts with 'statement'
 statement*
