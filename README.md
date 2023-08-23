@@ -6,7 +6,7 @@ This repository contains a script named `financial_report.py` that processes a b
 The script reads the input bank statement file and generates a financial report. The report includes income and expenses presented in both a table, a pie chart, and a bar graph.
 
 ## Input Statement File
-The input statement file should have the following headers: date, description, debit, credit, balance.
+The input statement file should be in a csv format and have the following headers: date, description, debit, credit, balance.
 
 ## Usage
 To use the script, provide the bank statement file as an input. You can also specify the period for which the report should be generated. The period can be a week (w), a month (m), or a quarter (q). If the period is not specified, the report will be generated for the full period.
