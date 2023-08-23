@@ -14,9 +14,25 @@ To use the script, provide the bank statement file as an input. You can also spe
 ```bash
 python financial_report.py <bank_statement_file> <period>
 ```
-## Running the script without python
+## Installing Required Python Modules
 
-This script can be run as a standalone executable without needing Python installed on the system. Here are the steps to create the executable:
+Before running the script, you need to install the required Python modules. You can do this by using the `requirements.txt` file that is included in this repository. Here is the command to install the required Python modules:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Running the Script
+
+After installing the required Python modules, you can run the script. Here is the basic command:
+
+```bash
+python financial_report.py <bank_statement_file> <period>
+```
+
+## Running the Script without Python
+
+This script can also be run as a standalone executable without needing Python installed on the system. Here are the steps to create the executable:
 
 1. Install PyInstaller. PyInstaller is not a part of the standard Python library, so it needs to be installed separately. You can install it using pip:
 
@@ -27,7 +43,7 @@ pip install pyinstaller
 2. Once PyInstaller is installed, you can use it to convert the Python script into an executable. Here is the basic command:
 
 ```bash
-pyinstaller --onefile your_script.py
+pyinstaller --onefile financial_report.py
 ```
 
 The `--onefile` option tells PyInstaller to create a single executable file. If you don't use this option, PyInstaller will create a directory that contains an executable along with some other files that the executable needs to run.
