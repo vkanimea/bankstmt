@@ -53,5 +53,17 @@ def generate_report(csv_file, period=None):
     plt.title('Income')
     plt.show()
 
-# Call the function with your CSV file
-generate_report('your_file.csv')
+import argparse
+
+# Create a parser
+parser = argparse.ArgumentParser(description='Generate a financial report from a CSV file.')
+
+# Add arguments
+parser.add_argument('csv_file', type=str, help='The path to the CSV file.')
+parser.add_argument('--period', type=str, choices=['w', 'm', 'q'], help='The period to generate the report for. Can be "w" for week, "m" for month, or "q" for quarter.')
+
+# Parse arguments
+args = parser.parse_args()
+
+# Call the function with the parsed arguments
+generate_report(args.csv_file, args.period)
