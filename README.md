@@ -14,7 +14,7 @@ To use the script, provide the bank statement file as an input. You can also spe
 ```bash
 python financial_report.py <bank_statement_file> <period>
 ```
-## Usage
+## Running the script without python
 
 This script can be run as a standalone executable without needing Python installed on the system. Here are the steps to create the executable:
 
