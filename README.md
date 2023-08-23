@@ -12,8 +12,10 @@ The input statement file should have the following headers: date, description, d
 To use the script, provide the bank statement file as an input. You can also specify the period for which the report should be generated. The period can be a week (w), a month (m), or a quarter (q). If the period is not specified, the report will be generated for the full period.
 
 ```bash
-python financial_report.py <bank_statement_file> <period>
+python financial_report.py bank_statement_file --period period
 ```
+
+In the command above, replace `bank_statement_file` with the path to your bank statement file, and replace `period` with `w`, `m`, or `q` to generate the report for a week, a month, or a quarter, respectively. If you don't want to specify a period, you can omit the `--period` argument.
 ## Installing Required Python Modules
 
 Before running the script, you need to install the required Python modules. You can do this by using the `requirements.txt` file that is included in this repository. Here is the command to install the required Python modules:
