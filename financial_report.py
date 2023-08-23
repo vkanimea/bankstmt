@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 def generate_report(csv_file, period=None):
-    # Read the CSV file
-    df = pd.read_csv(csv_file)
+    # Read the CSV file, skipping the first 9 lines
+    df = pd.read_csv(csv_file, skiprows=9)
 
     # Convert the date column to datetime
     df['date'] = pd.to_datetime(df['date'])
