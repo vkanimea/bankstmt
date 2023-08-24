@@ -60,11 +60,7 @@ The script generates several output files and displays some output on the screen
 
 ### Output Files
 
-The script generates the following output files:
-
-1. `report.txt`: This is a text file that contains the financial report in a tabular format.
-2. `report.pdf`: This is a PDF file that contains the financial report in a graphical format. It includes a pie chart and a bar graph.
-3. `report.csv`: This is a CSV file that contains the raw data used to generate the report.
+The script generates the following output op a pdf for bar, pie chart for summary visualization. 
 
 All output files are saved in the same directory where the script is run.
 
